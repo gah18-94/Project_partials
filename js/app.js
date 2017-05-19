@@ -1,4 +1,4 @@
-/*'use strict';
+'use strict';
 
 var eventsApp = angular.module('ATM', ['ngResource', 'ngRoute'])
     .config(function($routeProvider, $locationProvider) {
@@ -28,9 +28,9 @@ var eventsApp = angular.module('ATM', ['ngResource', 'ngRoute'])
         $locationProvider.html5Mode(true);
 
     });
-*/
 
 
+/*
 var app = angular.module('app', 'ui.router');
 
 app.config(function($stateProvider, $urlRouteProvider) {
@@ -40,7 +40,7 @@ app.config(function($stateProvider, $urlRouteProvider) {
         .state('login', {
             url: "/login",
             templateUrl: "partials/login/login.html",
-            controller: "js/LoginController"
+            controller: "LoginController"
         })
         .state('AccountDetails', {
             url: "/AccountDetails",
@@ -53,4 +53,4 @@ app.config(function($stateProvider, $urlRouteProvider) {
             controller: "HomeController"
         });
 
-});
+});*/

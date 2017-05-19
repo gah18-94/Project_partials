@@ -1,4 +1,4 @@
-app.controller('HomeController', ['$scope', '$location', HomeController]);
+app.controller('HomeController', ['$location']);
 
 function HomeController($scope) {
 
