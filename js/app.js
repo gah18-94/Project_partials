@@ -1,12 +1,11 @@
 'use strict';
 
-var eventsApp = angular.module('ATM', ['ngResource', 'ngRoute'])
-    .config(function($routeProvider, $locationProvider) {
-        $routeProvider.when('/', {
-            templateUrl: 'partials/login/Login.html',
-            controller: 'LoginController.js'
+var app = angular.module('ATM', ['ngResource', 'ngRoute'])
+    .config(function($routeProvider) {
+        $routeProvider.when('/login', {
+            templateUrl: '../partials/login/Login.html'
         });
-        $routeProvider.when('/Home', {
+        /*$routeProvider.when('/Home', {
             templateUrl: 'partials/Home/Home.html',
             controller: 'HomeController'
         });
@@ -22,10 +21,10 @@ var eventsApp = angular.module('ATM', ['ngResource', 'ngRoute'])
                     return eventData.getEvent($route.current.pathParams.eventId).$promise;
                 }
             }
-        });
+        });*/
         $routeProvider.otherwise({ redirectTo: '/login' });
 
-        $locationProvider.html5Mode(true);
+        /*$locationProvider.html5Mode(true);*/
 
     });
 
