@@ -2,9 +2,10 @@
     <div id="mySidenav" class="sidenav">
         <span style="font-size:50px; color:darkcyan">Options</span>
         <br>
-        <a ui-sref="Account" ui-sref-active="active">Account Details</a>
-        <a ui-sref="Dispenser" ui-sref-active="active">Dispenser Money</a>
+        <a ui-sref="Account({ usr: {{username}}})" ui-sref-active="active">Account Details</a>
+        <a ui-sref="Dispenser({ usr :username})" ui-sref-active="active">Dispenser Money</a>
         <br>
+        <span style="font-size:20px; color:darkcyan; margin-left: 0rem"> User: {{username}}</span>
         <a ui-sref="Login" ui-sref-active="active">Log out</a>
 
         <span style="font-size:15px; color:dodgerblue; position: absolute; bottom:2px;right: 5">ATM - &copy; Gustavo Alpízar _V 0.0.1</span>

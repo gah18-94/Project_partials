@@ -1,5 +1,6 @@
-app.controller('DispenserController');
+app.controller('DispenserController',
 
-function DispenserController($scope) {
+    function DispenserController($scope, $stateParams, $location) {
+        $scope.username = $stateParams.usr;
 
-}
+    });

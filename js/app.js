@@ -17,23 +17,34 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
             }
         })
         .state('Home', {
-            url: "/Home",
+            url: "/Home:usr",
             views: {
-                "root@": { templateUrl: "../partials/Home/Home.html" }
+                "root@": { templateUrl: "../partials/Home/Home.html" },
+                params: {
+                    usr: ""
+                }
+
             }
         })
         .state('Account', {
-            url: "/Account",
+            url: "/Account:usr",
             views: {
                 "root@": { templateUrl: "../partials/Home/Home.html" },
-                "HomeView@": { templateUrl: "../partials/AccountDetails/Account.html" }
+                "HomeView@": { templateUrl: "../partials/AccountDetails/Account.html" },
+                params: {
+                    usr: ""
+                }
+
             }
         })
         .state('Dispenser', {
             url: "/Dispenser",
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
-                "HomeView": { templateUrl: "../partials/DispenserCash/Dispenser.html" }
+                "HomeView": { templateUrl: "../partials/DispenserCash/Dispenser.html" },
+                params: {
+                    usr: ""
+                }
             }
         });
 

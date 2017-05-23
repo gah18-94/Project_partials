@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('LoginController',
-    function LoginController($scope, $location) {
+    function LoginController($scope, $location, $state) {
 
         $scope.ValidateUser = function() {
             if ($scope.newLogIn.$valid) {
@@ -10,7 +10,9 @@ app.controller('LoginController',
                         if ($scope.user.password != null || $scope.user.password != '') {
                             if ($scope.user.password === '1') {
                                 alert('Ok, go ahead.');
-                                $location.path("/Home");
+                                $state.go("Home", {
+                                    usr: $scope.user.userName
+                                });
                             } else {
                                 alert('Wrong pwd.');
                             }

@@ -1,5 +1,5 @@
-app.controller('AccountController');
+app.controller('AccountController',
 
-function AccountController($scope) {
-
-}
+    function AccountController($scope, $stateParams, $location) {
+        $scope.username = $stateParams.usr;
+    });
