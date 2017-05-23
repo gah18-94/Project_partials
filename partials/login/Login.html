@@ -1,4 +1,4 @@
-
+<div id="applicationHost" class="container">
     <div class="span12 pagination-centered center-block " ng-controller="LoginController" align="center">
         <div class="container">
             <div ng-form="newLogIn">
@@ -7,7 +7,7 @@
                     <div class="span3">
                         <fieldset>
                             <label for="userName">User Name:</label>
-                            <input focus id="userName" required ng-pattern="/^[-A-Za-z0-9]{2,20}$/" type="text" placeholder="Username" ng-model="user.userName" />
+                            <input focus id="userName" required ng-pattern="/^[-A-Za-z0-9]{1,20}$/" type="text" placeholder="Username" ng-model="user.userName" />
                             </br>
                             <label for="password">Password:</label>
                             <input id="password" required type="password" placeholder="Password" ng-model="user.password" />
@@ -26,3 +26,4 @@
             </div ng-form>
         </div>
     </div>
+</div>

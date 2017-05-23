@@ -1,5 +1,7 @@
-app.controller('HomeController', ['$location']);
+'use strict';
+app.controller('HomeController',
 
-function HomeController($scope) {
+    function HomeController($scope, $location) {
 
-}
+    }
+);

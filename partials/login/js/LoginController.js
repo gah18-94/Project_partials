@@ -1,16 +1,16 @@
 'use strict';
 
 app.controller('LoginController',
-    function LoginController($scope) {
-        $scope.password
+    function LoginController($scope, $location) {
+
         $scope.ValidateUser = function() {
             if ($scope.newLogIn.$valid) {
                 if ($scope.user.userName != null || $scope.user.userName != '') {
-                    if ($scope.user.userName === 'galpizar') {
+                    if ($scope.user.userName === 'g') {
                         if ($scope.user.password != null || $scope.user.password != '') {
-                            if ($scope.user.password === '123456') {
+                            if ($scope.user.password === '1') {
                                 alert('Ok, go ahead.');
-                                $location.path("Home");
+                                $location.path("/Home");
                             } else {
                                 alert('Wrong pwd.');
                             }

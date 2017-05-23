@@ -72,3 +72,11 @@
         font-size: 18px;
     }
 }
+
+
+/*Change color selection on the menu*/
+
+.active {
+    color: red;
+    font-weight: bold;
+}

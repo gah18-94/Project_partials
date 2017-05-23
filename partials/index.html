@@ -14,26 +14,33 @@
 
 <body>
 
-    <div id="applicationHost" class="container body-content admin-appHost">
-         <div ng-view=""></div>
-    </div>
-
-    <div id="footer">
-        <div class="container">
-            <span class="pull-right text-info credit">ATM - &copy; Gustavo Alpízar</span>
-        </div>
+    <div ui-view="content" class="row" id="container">
+        <div ui-view="root"></div>
+        <div class="col-md-8" style="float: left " ui-view="HomeView"></div>
     </div>
 
 
- 
-    <script src="../lib/jquery.min.js"></script>
-    <script src="../lib/angular/angular.js"></script>
-    <script src="../lib/angular/angular-resource.min.js"></script>
-    <script src="../lib/angular/angular-route.min.js"></script>
-    <script src="../lib/angular/angular-sanitize.js"></script>
-    <script src="../lib/underscore-1.4.4.min.js"></script>
-    <script src="../js/app.js"></script>
-    <script src="/partials/login/js/LoginController.js"></script>
 </body>
+
+<script src="../lib/jquery.min.js"></script>
+<script src="../lib/angular/angular.js"></script>
+<script src="../lib/angular/angular-resource.min.js"></script>
+<script src="../lib/angular/angular-locale_es.js"></script>
+<script src="../lib/angular/angular-route.min.js"></script>
+<script src="../lib/angular/angular-sanitize.js"></script>
+
+<script src="../lib/angular/angular-ui-router.js"></script>
+<script src="../lib/underscore-1.4.4.min.js"></script>
+<script src="../js/app.js"></script>
+<link rel="stylesheet" href="/css/bootstrap.darkly.css" />
+<link rel="stylesheet" href="/partials/Home/css/app.css" />
+<script src="/partials/login/js/LoginController.js"></script>
+
+<script src="/partials/Home/js/HomeController.js"></script>
+<script src="/partials/AccountDetails/js/AccountController.js"></script>
+<script src="/partials/DispenserCash/js/DispenserController.js"></script>
+
+
+
 
 </html>
