@@ -32,8 +32,8 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
         .state('Dispenser', {
             url: "/Dispenser",
             views: {
-                "root@": { templateUrl: "../partials/Home/Home.html" },
-                "HomeView@": { templateUrl: "../partials/DispenserCash/Dispenser.html" }
+                "root": { templateUrl: "../partials/Home/Home.html" },
+                "HomeView": { templateUrl: "../partials/DispenserCash/Dispenser.html" }
             }
         });
 
