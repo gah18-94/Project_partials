@@ -1,1 +1,35 @@
-<span>Cashier Dispenser</span>
+<div>
+
+    <div class="col-md-5">
+        <h2>{{ disp.Description }}</h2>
+        <wait-cursor display-when="disp.isBusy"></wait-cursor>
+        <div class="alert alert-danger" ng-show="disp.errorMessage">{{disp.errorMessage }}</div>
+
+        <form novalidate name="formDisp" ng-submit="disp.SubmitDebit()">
+
+            <div class="form-group">
+                <label>Account to Debit</label>
+                <select type="" class="form-control" id="Account" name="Account" ng-model="disp.AccountSelection">
+                    <option value="Account1">Account1</option>
+                     <option value="Account2">Account2</option>
+                </select>
+
+                <div class="form-group ">
+                    <label>Amount</label>
+                    <input type="number" class="form-control" id="Amount" name="Amount" ng-model="disp.Amount" />
+                    <span class="text-danger" ng-show="disp.endDate.$error.required">Required</span>
+
+                </div>
+
+            </div>
+            <div>
+                <input type="submit" value="Submit" class="btn btn-success" ng-disabled="formDisp.$invalid" />
+            </div>
+        </form>
+        <br>
+
+
+    </div>
+
+
+</div>

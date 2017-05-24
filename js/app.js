@@ -17,34 +17,36 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
             }
         })
         .state('Home', {
-            url: "/Home:usr",
+            url: "/Home/:usr",
             views: {
-                "root@": { templateUrl: "../partials/Home/Home.html" },
-                params: {
-                    usr: ""
-                }
+                "root@": { templateUrl: "../partials/Home/Home.html" }
+
 
             }
         })
         .state('Account', {
-            url: "/Account:usr",
+            url: "/Account/:usr",
             views: {
-                "root@": { templateUrl: "../partials/Home/Home.html" },
-                "HomeView@": { templateUrl: "../partials/AccountDetails/Account.html" },
-                params: {
-                    usr: ""
-                }
+                "root": { templateUrl: "../partials/Home/Home.html" },
+                "HomeView": { templateUrl: "../partials/AccountDetails/Account.html" },
+
 
             }
         })
         .state('Dispenser', {
-            url: "/Dispenser",
+            url: "/Dispenser/:usr",
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/DispenserCash/Dispenser.html" },
-                params: {
-                    usr: ""
-                }
+
+            }
+        })
+        .state('History', {
+            url: "/History/:usr",
+            views: {
+                "root": { templateUrl: "../partials/Home/Home.html" },
+                "HomeView": { templateUrl: "../partials/TransactionHistory/History.html" },
+
             }
         });
 
@@ -82,45 +84,3 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
     /*$locationProvider.html5Mode(true);*/
 
 });
-/*
-app.config(function($stateProvider, $urlRouteProvider) {
-            $urlRouterProvider.otherwise("/login");
-
-            $stateProvider
-
-                .state('AccountDetails', {
-                    url: "/AccountDetails",
-                    templateUrl: "partials/AccountDetails/Account.html"
-                })
-                .state('Dispenser', {
-                    url: "/Dispenser",
-                    templateUrl: "partials/DispenserCash/Dispenser.html"
-                });
-
-
-
-
-            /*
-            var app = angular.module('app', 'ui.router');
-
-            app.config(function($stateProvider, $urlRouteProvider) {
-                $urlRouterProvider.otherwise("/login");
-
-                $stateProvider
-                    .state('login', {
-                        url: "/login",
-                        templateUrl: "partials/login/login.html",
-                        controller: "LoginController"
-                    })
-                    .state('AccountDetails', {
-                        url: "/AccountDetails",
-                        templateUrl: "partials/AccountDetails/Account.html",
-                        controller: "AccountController"
-                    })
-                    .state('Home', {
-                        url: "/Home",
-                        templateUrl: "partials/Home/Account.html",
-                        controller: "HomeController"
-                    });
-
-            });*/

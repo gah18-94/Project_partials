@@ -1,3 +1,32 @@
 <div>
-    <span>Account Details</span>
+
+    <div class="col-md-10">
+        <h2>{{ Acc.Description }}</h2>
+        <wait-cursor display-when="Acc.isBusy"></wait-cursor>
+        <div class="alert alert-danger" ng-show="Acc.errorMessage">{{Acc.errorMessage }}</div>
+
+
+        <br>
+        <table class="table table-responsive table-striped">
+            <tr>
+                <th>ID Account</th>
+                <th>Description</th>
+                <th>Currency Type</th>
+                <th>Total Amount</th>
+                <th>Created Date</th>
+                <th>Active</th>
+            </tr>
+            <tr ng-repeat="stop in vm.stops">
+                <td>{{ Acc.Id_Account }}</td>
+                <td>{{ Acc.Description }}</td>
+                <td>{{ Acc.CurrencyType }}</td>
+                <td>{{ Acc.TotalAmount }}</td>
+                <td>{{ Acc.CreatedDate| date:shortDate }}</td>
+                <td>{{ Acc.isActive }}</td>
+            </tr>
+        </table>
+
+    </div>
+
+
 </div>

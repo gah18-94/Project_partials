@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('LoginController',
-    function LoginController($scope, $location, $state) {
+    function LoginController($scope, $location, $state, $http) {
 
         $scope.ValidateUser = function() {
             if ($scope.newLogIn.$valid) {
@@ -9,9 +9,10 @@ app.controller('LoginController',
                     if ($scope.user.userName === 'g') {
                         if ($scope.user.password != null || $scope.user.password != '') {
                             if ($scope.user.password === '1') {
-                                alert('Ok, go ahead.');
+                                /* alert('Ok, go ahead.');*/
                                 $state.go("Home", {
                                     usr: $scope.user.userName
+
                                 });
                             } else {
                                 alert('Wrong pwd.');
@@ -26,6 +27,18 @@ app.controller('LoginController',
                     alert('Username null or empty');
                 }
             }
+            /*  var user = this;
+              user.isBusy = true;
+              $http.get('http://localhost:53153/api/Users/' + $scope.user.username + '/' + $scope.user.password)
+                  .then(function(response) {
+                          angular.copy(response.data, $scope.uservalidated);
+                      },
+                      function(err) {
+                          user.errorMessage = "Failed";
+                      }).finally(function() {
+                      user.isBusy = false;
+                  });*/
+
         }
 
     }

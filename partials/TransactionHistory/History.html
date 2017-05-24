@@ -1,0 +1,59 @@
+<div>
+
+    <div class="col-md-5">
+        <h2>{{ hist.Description }}</h2>
+        <wait-cursor display-when="hist.isBusy"></wait-cursor>
+        <div class="alert alert-danger" ng-show="hist.errorMessage">{{hist.errorMessage }}</div>
+
+        <form novalidate name="formTransaction" ng-submit="hist.Search()">
+            <div class="form-group ">
+                <label>Start Date</label>
+                <input type="date" class="form-control" id="startDate" name="arrival" ng-model="hist.StartDate" required ng-pattern="/^(\d{2})\/(\d{2})\/(\d{4})$/" />
+                <span class="text-danger" ng-show="hist.StartDate.$error.required">Required</span>
+                <span class="text-danger" ng-show="hist.StartDate.$error.pattern">Must be in format of MM/DD/YYYY.</span>
+            </div>
+
+            <div class="form-group ">
+                <label>End Date</label>
+                <input type="date" class="form-control" id="endDate" name="arrival" ng-model="hist.endDate" required ng-pattern="/^(\d{2})\/(\d{2})\/(\d{4})$/" />
+                <span class="text-danger" ng-show="hist.endDate.$error.required">Required</span>
+                <span class="text-danger" ng-show="hist.endDate.$error.pattern">Must be in format of MM/DD/YYYY.</span>
+            </div>
+            <div class="form-group">
+                <label>Account</label>
+                <select type="" class="form-control" id="Account" name="name" ng-model="hist.AccountSelection" required ng-minlength="5">
+                    <option value="Account1">Account1</option>
+                     <option value="Account2">Account2</option>
+                </select>
+                <span class="text-danger" ng-show="newStopForm.name.$error.required">Required</span>
+                <span class="text-danger" ng-show="newStopForm.name.$error.minlength">Must be 5 characters or more</span>
+            </div>
+            <div>
+                <input type="submit" value="Search" class="btn btn-success" ng-disabled="formTransaction.$invalid" />
+            </div>
+        </form>
+        <br>
+
+
+    </div>
+
+
+</div>
+<div class="col-md-10">
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>ID Transacion</th>
+            <th>Transacion Type</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Description</th>
+        </tr>
+        <tr ng-repeat="stop in vm.stops">
+            <td>{{ hist.Id_transacion }}</td>
+            <td>{{ hist.TransactionType }}</td>
+            <td>{{ hist.TransactionDate | date:shortDate }}</td>
+            <td>{{ hist.TransactionAmount }}</td>
+            <td>{{ hist.Description }}</td>
+        </tr>
+    </table>
+</div>
