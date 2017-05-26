@@ -1,19 +1,27 @@
 'use strict';
 
 app.controller('LoginController',
-    function LoginController($scope, $location, $state, $http) {
+    function LoginController($scope, $location, $state, $http, ATMService) {
 
         $scope.ValidateUser = function() {
             if ($scope.newLogIn.$valid) {
                 if ($scope.user.userName != null || $scope.user.userName != '') {
-                    if ($scope.user.userName === 'g') {
+                    if ($scope.user.userName === 'galpizar') {
                         if ($scope.user.password != null || $scope.user.password != '') {
-                            if ($scope.user.password === '1') {
+                            if ($scope.user.password === '123456') {
                                 /* alert('Ok, go ahead.');*/
-                                $state.go("Home", {
-                                    usr: $scope.user.userName
 
-                                });
+
+                                ATMService.UserLogin($scope.user.userName, $scope.user.password)
+                                    .then(function(response) {
+                                        console.log(response, 'res');
+                                        var response = response.data;
+                                        $state.go("Home", { usr: $scope.user.userName });
+                                    }, function(error) {
+                                        console.log(error, " can't get data.");
+                                    });
+
+
                             } else {
                                 alert('Wrong pwd.');
                             }
