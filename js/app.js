@@ -17,15 +17,15 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
             }
         })
         .state('Home', {
-            url: "/Home/:usr",
+            url: "/Home",
+            params: { usr: null },
             views: {
                 "root@": { templateUrl: "../partials/Home/Home.html" }
-
-
             }
         })
         .state('Account', {
-            url: "/Account/:usr",
+            url: "/Account",
+            params: { usr: null },
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/AccountDetails/Account.html" },
@@ -34,7 +34,8 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
             }
         })
         .state('Dispenser', {
-            url: "/Dispenser/:usr",
+            url: "/Dispenser",
+            params: { usr: null },
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/DispenserCash/Dispenser.html" },
@@ -42,7 +43,8 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
             }
         })
         .state('History', {
-            url: "/History/:usr",
+            url: "/History/",
+            params: { usr: null },
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/TransactionHistory/History.html" },
