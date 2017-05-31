@@ -2,6 +2,7 @@ app.service('ATMService',
     function($http) { // Return public API.
         return ({
             UserLogin: UserLogin,
+            getAccounts: getAccounts,
             getAccountDetails: getAccountDetails,
             getTransactionHistory: getTransactionHistory,
             postDispenseMoney: postDispenseMoney
@@ -18,7 +19,7 @@ app.service('ATMService',
 
             var request = {
                 method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password,
+                url: "http://localhost:5000/api/Users/" + username + "/" + password
 
             };
 
@@ -35,18 +36,37 @@ app.service('ATMService',
 
 
 
-        function getAccountDetails(username, password) {
-            UrlReq = URL + username + '/' + password;
-
-            var request = $http({
+        function getAccounts(username, password, callback) {
+            var request = {
                 method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password,
-                params: {
-                    action: "get"
-                }
-            });
+                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/Account"
 
-            return (request.then(handleSuccess, handleError));
+            };
+
+            $http(request)
+                .success(function (data) {
+                    callback(null, data);
+                })
+                .error(function (data,  status) {
+                    callback(status, data);
+                });
+
+        }
+
+        function getAccountDetails(username, password, callback) {
+            var request = {
+                method: "get",
+                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/AccountDetails"
+
+            };
+
+            $http(request)
+                .success(function (data) {
+                    callback(null, data);
+                })
+                .error(function (data,  status) {
+                    callback(status, data);
+                });
 
         }
 

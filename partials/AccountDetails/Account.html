@@ -1,7 +1,7 @@
-<div>
+<div ng-controller="AccountController">
 
     <div class="col-md-10">
-        <h2>{{ Acc.Description }}</h2>
+        <h2>Accounts</h2>
         <wait-cursor display-when="Acc.isBusy"></wait-cursor>
         <div class="alert alert-danger" ng-show="Acc.errorMessage">{{Acc.errorMessage }}</div>
 
@@ -16,13 +16,13 @@
                 <th>Created Date</th>
                 <th>Active</th>
             </tr>
-            <tr ng-repeat="stop in vm.stops">
-                <td>{{ Acc.Id_Account }}</td>
-                <td>{{ Acc.Description }}</td>
-                <td>{{ Acc.CurrencyType }}</td>
-                <td>{{ Acc.TotalAmount }}</td>
-                <td>{{ Acc.CreatedDate| date:shortDate }}</td>
-                <td>{{ Acc.isActive }}</td>
+            <tr ng-repeat="item in Accounts">
+                <td>{{ item.id_Account }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.currencyType }}</td>
+                <td>{{ item.totalAmount }}</td>
+                <td>{{ item.createdDate| date:shortDate }}</td>
+                <td>{{ item.isActive }}</td>
             </tr>
         </table>
 

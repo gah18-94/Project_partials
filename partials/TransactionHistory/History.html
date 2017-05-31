@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="HistoryController">
 
     <div class="col-md-5">
         <h2>{{ hist.Description }}</h2>
@@ -8,22 +8,16 @@
         <form novalidate name="formTransaction" ng-submit="hist.Search()">
             <div class="form-group ">
                 <label>Start Date</label>
-                <input type="date" class="form-control" id="startDate" name="arrival" ng-model="hist.StartDate" required ng-pattern="/^(\d{2})\/(\d{2})\/(\d{4})$/" />
-                <span class="text-danger" ng-show="hist.StartDate.$error.required">Required</span>
-                <span class="text-danger" ng-show="hist.StartDate.$error.pattern">Must be in format of MM/DD/YYYY.</span>
+                <input type="date" class="form-control" id="startDate" name="start" ng-model="hist.StartDate" />
             </div>
 
             <div class="form-group ">
                 <label>End Date</label>
-                <input type="date" class="form-control" id="endDate" name="arrival" ng-model="hist.endDate" required ng-pattern="/^(\d{2})\/(\d{2})\/(\d{4})$/" />
-                <span class="text-danger" ng-show="hist.endDate.$error.required">Required</span>
-                <span class="text-danger" ng-show="hist.endDate.$error.pattern">Must be in format of MM/DD/YYYY.</span>
+                <input type="date" class="form-control" id="endDate" name="end" ng-model="hist.endDate" />
             </div>
             <div class="form-group">
                 <label>Account</label>
-                <select type="" class="form-control" id="Account" name="name" ng-model="hist.AccountSelection" required ng-minlength="5">
-                    <option value="Account1">Account1</option>
-                     <option value="Account2">Account2</option>
+                <select type="" class="form-control" id="Account" name="name" ng-model="hist.Account" ng-options="acc.id_Account as acc.description for acc in Accounts" required>
                 </select>
                 <span class="text-danger" ng-show="newStopForm.name.$error.required">Required</span>
                 <span class="text-danger" ng-show="newStopForm.name.$error.minlength">Must be 5 characters or more</span>

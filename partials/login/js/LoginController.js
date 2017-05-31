@@ -12,10 +12,10 @@ app.controller('LoginController',
                     console.log(response);
                     console.log(err);
                     $state.go('Home', {
-                        usr: { username: response.username, fullName: response.fullName }
+                        usr: { fullName: response.fullName, username: response.username, password: response.password }
                     });
                 } else {
-                    alert("Username or password wrong, please try again.")
+                    alert("Wrong username or password , please try again.")
                 }
 
             })
