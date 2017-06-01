@@ -26,4 +26,26 @@ app.controller('DispenserController',
             $state.go('Login');
         }
 
+        $scope.DispenseMoney = function() {
+            ATMService.postDispenseMoney($scope.usr.username, $scope.usr.password, $scope.disp.AccountSelection, $scope.disp.Amount, $scope.disp.Description,
+                function(err, response) {
+                    disp.isBusy = true;
+                    if (err) {
+                        return alert(response);
+                        disp.isBusy = false;
+                    }
+
+                    if (response != null) {
+                        console.log(response);
+                        console.log(err);
+                        return alert(response);
+                        disp.isBusy = false;
+
+                    } else {
+                        alert(response)
+                        disp.isBusy = false;
+                    }
+                })
+        }
+
     });

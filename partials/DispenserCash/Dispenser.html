@@ -18,9 +18,15 @@
 
                 </div>
 
+                <div class="form-group ">
+                    <label>Description</label>
+                    <input type="text" class="form-control" id="Amount" name="Amount" ng-model="disp.Description" maxlength="50" required />
+
+                </div>
+
             </div>
             <div>
-                <input type="submit" value="Submit" class="btn btn-success" ng-disabled="formDisp.$invalid" />
+                <input type="submit" ng-click="DispenseMoney()" value="Submit" class="btn btn-success" ng-disabled="formDisp.$invalid" />
             </div>
         </form>
         <br>

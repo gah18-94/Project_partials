@@ -86,10 +86,10 @@ app.service('ATMService',
                 });
         }
 
-        function postDispenseMoney(username, password) {
+        function postDispenseMoney(username, password, Id_Account, Amount, Description, callback) {
             var request = {
-                method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/AccountDetails"
+                method: "post",
+                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/Accounts/TransactionHistory/Dispense/" + Id_Account + "/" + Amount + "/" + Description
 
             };
 
