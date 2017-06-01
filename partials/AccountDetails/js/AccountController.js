@@ -1,13 +1,14 @@
 app.controller('AccountController',
 
-    function AccountController($scope, $state, $stateParams, $location, ATMService) {
+    function AccountController($scope, $state, $stateParams, $location, ATMService, $cookies) {
         var Acc = this;
-        if ($stateParams.usr != null) {
+        if ($cookies.getObject('usr')) {
+            $scope.usr = $cookies.getObject('usr');
+            $scope.username = $scope.usr.fullName;
             Acc.isBusy = true;
-            $scope.username = $stateParams.usr.fullName;
-            ATMService.getAccountDetails($stateParams.usr.username, $stateParams.usr.password, function(err, response) {
+            ATMService.getAccountDetails($scope.usr.username, $scope.usr.password, function(err, response) {
                 if (err) {
-                    return alert(err);
+                    return alert(response);
                 }
                 if (response != null) {
                     console.log(response);
@@ -15,7 +16,7 @@ app.controller('AccountController',
                     $scope.Accounts = response;
                     Acc.isBusy = false;
                 } else {
-                    alert("There aren't accounts for the user.")
+                    alert(response)
                 }
 
             })

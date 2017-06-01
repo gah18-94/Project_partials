@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('ATM', ['ui.router', 'ngRoute'])
+var app = angular.module('ATM', ['ui.router', 'ngRoute', 'ngCookies'])
 app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
 
     $stateProvider
@@ -18,14 +18,12 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
         })
         .state('Home', {
             url: "/Home",
-            params: { usr: null },
             views: {
                 "root@": { templateUrl: "../partials/Home/Home.html" }
             }
         })
         .state('Account', {
             url: "/Account",
-            params: { usr: null },
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/AccountDetails/Account.html" },
@@ -35,7 +33,6 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
         })
         .state('Dispenser', {
             url: "/Dispenser",
-            params: { usr: null },
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/DispenserCash/Dispenser.html" },
@@ -44,7 +41,6 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
         })
         .state('History', {
             url: "/History/",
-            params: { usr: null },
             views: {
                 "root": { templateUrl: "../partials/Home/Home.html" },
                 "HomeView": { templateUrl: "../partials/TransactionHistory/History.html" },

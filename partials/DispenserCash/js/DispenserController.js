@@ -1,19 +1,23 @@
 app.controller('DispenserController',
 
-    function DispenserController($scope, $state, $stateParams, $location, ATMService) {
+    function DispenserController($scope, $state, $cookies, $location, ATMService) {
         var disp = this;
-        if ($stateParams.usr != null) {
-            $scope.username = $stateParams.usr.fullName;
-            ATMService.getAccounts($stateParams.usr.username, $stateParams.usr.password, function(err, response) {
+        if ($cookies.getObject('usr')) {
+            $scope.usr = $cookies.getObject('usr');
+            $scope.username = $scope.usr.fullName;
+            ATMService.getAccounts($scope.usr.username, $scope.usr.password, function(err, response) {
+                disp.isBusy = true;
                 if (err) {
-                    return alert(err);
+                    return alert(response);
                 }
                 if (response != null) {
                     console.log(response);
                     console.log(err);
                     $scope.Accounts = response;
+                    disp.isBusy = false;
                 } else {
-                    alert("There aren't accounts for the user.")
+                    alert(response)
+                    disp.isBusy = false;
                 }
 
             })
