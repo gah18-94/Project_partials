@@ -28,26 +28,30 @@ app.controller('HistoryController',
         }
 
         $scope.Search = function() {
-            ATMService.getTransactionHistory($scope.usr.username,
-                $scope.usr.password, $scope.hist.Account, $scope.hist.StartDate.toISOString(), $scope.hist.endDate.toISOString(),
-                function(err, response) {
-                    hist.isBusy = true;
-                    if (err) {
-                        return alert(response);
-                        hist.isBusy = false;
-                    }
+            if ($scope.hist.StartDate.toISOString() <= $scope.hist.endDate.toISOString()) {
+                ATMService.getTransactionHistory($scope.usr.username,
+                    $scope.usr.password, $scope.hist.Account, $scope.hist.StartDate.toISOString(), $scope.hist.endDate.toISOString(),
+                    function(err, response) {
+                        hist.isBusy = true;
+                        if (err) {
+                            return alert(response);
+                            hist.isBusy = false;
+                        }
 
-                    if (response != null) {
-                        console.log(response);
-                        console.log(err);
-                        $scope.Transactions = response;
-                        hist.isBusy = false;
+                        if (response != null) {
+                            console.log(response);
+                            console.log(err);
+                            $scope.Transactions = response;
+                            hist.isBusy = false;
 
-                    } else {
-                        alert(response)
-                        hist.isBusy = false;
-                    }
-                })
+                        } else {
+                            alert(response)
+                            hist.isBusy = false;
+                        }
+                    })
+            } else {
+                return alert("Start Date must be less then end date.")
+            }
 
         }
 
