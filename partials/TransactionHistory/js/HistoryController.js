@@ -28,14 +28,14 @@ app.controller('HistoryController',
         }
 
         $scope.Search = function() {
-            if ($scope.hist.StartDate.toISOString() <= $scope.hist.endDate.toISOString()) {
+            if ($scope.hist.StartDate.time() <= $scope.hist.endDate.time()) {
                 ATMService.getTransactionHistory($scope.usr.username,
                     $scope.usr.password, $scope.hist.Account, $scope.hist.StartDate.toISOString(), $scope.hist.endDate.toISOString(),
                     function(err, response) {
                         hist.isBusy = true;
                         if (err) {
-                            return alert(response);
                             hist.isBusy = false;
+                            return alert(response);
                         }
 
                         if (response != null) {
