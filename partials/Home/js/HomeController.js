@@ -1,7 +1,7 @@
 'use strict';
 app.controller('HomeController',
 
-    function HomeController($scope, $state, $location, $cookies) {
+    function HomeController($scope, $state, $location, $cookies, ATMService) {
         if ($cookies.getObject('usr')) {
             $scope.usr = $cookies.getObject('usr');
             if ($scope.usr != null) {
@@ -19,6 +19,9 @@ app.controller('HomeController',
                         case 3:
                             $state.go('History');
                             break;
+                        case 4:
+                            $state.go('AuditLog');
+                            break;
 
                         default:
                             $state.go('Home');
@@ -34,11 +37,13 @@ app.controller('HomeController',
         }
 
         $scope.LogOut = function() {
+            ATMService.postAuditLog("LogOut User" + $scope.username, "Info");
             var cookies = $cookies.getAll();
             angular.forEach(cookies, function(v, k) {
                 $cookies.remove(k);
             });
             $state.go('Login');
+
         }
     }
 );

@@ -8,6 +8,7 @@ app.controller('DispenserController',
             ATMService.getAccounts($scope.usr.username, $scope.usr.password, function(err, response) {
                 disp.isBusy = true;
                 if (err) {
+                    ATMService.postAuditLog("Error in function getAccounts: " + response + " _ Error: " + err, "Error");
                     return alert(response);
                 }
                 if (response != null) {
@@ -15,9 +16,11 @@ app.controller('DispenserController',
                     console.log(err);
                     $scope.Accounts = response;
                     disp.isBusy = false;
+                    ATMService.postAuditLog("Succesfully getAccounts for user: " + $scope.usr.username, "Info");
                 } else {
                     alert(response)
                     disp.isBusy = false;
+                    ATMService.postAuditLog("Error in function getAccounts: " + response + " _ Error: " + err, "Critical Error");
                 }
 
             })
@@ -31,18 +34,23 @@ app.controller('DispenserController',
                 function(err, response) {
                     disp.isBusy = true;
                     if (err) {
-                        return alert(response);
                         disp.isBusy = false;
+                        ATMService.postAuditLog("Error in function postDispenseMoney: " + response + " _ Error: " + err, "Error");
+                        return alert(response);
+
                     }
 
                     if (response != null) {
                         console.log(response);
                         console.log(err);
-                        return alert(response);
                         disp.isBusy = false;
+                        ATMService.postAuditLog("Succesfully postDispenseMoney for user" + $scope.usr.username, "Info");
+                        return alert(response);
+
 
                     } else {
                         alert(response)
+                        ATMService.postAuditLog("Error in function postDispenseMoney: " + response + " _ Error: " + err, "Critical Error");
                         disp.isBusy = false;
                     }
                 })

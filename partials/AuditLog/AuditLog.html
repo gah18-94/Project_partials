@@ -1,0 +1,40 @@
+<div ng-controller="AuditLogController">
+
+    <div class="col-md-10">
+        <h2>Audit Logs</h2>
+        <wait-cursor display-when="Ad.isBusy"></wait-cursor>
+        <div class="alert alert-danger" ng-show="Ad.errorMessage">{{Ad.errorMessage }}</div>
+
+
+        <br>
+        <form class="form-inline">
+            <div class="form-group">
+                <label>Search</label>
+                <input type="text" ng-model="search" class="form-control" placeholder="Search">
+            </div>
+        </form>
+        <br>
+        <table class="table table-responsive table-striped">
+            <tr>
+                <th ng-click="sort('Description')">Description
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('Type')"> Type
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('Date')"> Date
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='Date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+            </tr>
+            <tr ng-repeat="item in Logs | orderBy:sortKey:reverse |filter:search">
+                <td>{{ item.Description }}</td>
+                <td>{{ item.Type }}</td>
+                <td>{{ item.Date}}</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+
+</div>

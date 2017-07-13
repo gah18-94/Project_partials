@@ -1,11 +1,15 @@
 app.service('ATMService',
     function($http) { // Return public API.
+        var pathATM = "http://localhost:5000/api/Users/";
+        var pathMongoLog = "http://localhost:3000/api/Log";
         return ({
             UserLogin: UserLogin,
             getAccounts: getAccounts,
             getAccountDetails: getAccountDetails,
             getTransactionHistory: getTransactionHistory,
-            postDispenseMoney: postDispenseMoney
+            postDispenseMoney: postDispenseMoney,
+            getAuditLogs: getAuditLogs,
+            postAuditLog: postAuditLog
         });
 
 
@@ -19,7 +23,7 @@ app.service('ATMService',
 
             var request = {
                 method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password
+                url: pathATM + username + "/" + password
 
             };
 
@@ -39,7 +43,7 @@ app.service('ATMService',
         function getAccounts(username, password, callback) {
             var request = {
                 method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/Accounts"
+                url: pathATM + username + "/" + password + "/Accounts"
 
             };
 
@@ -56,7 +60,7 @@ app.service('ATMService',
         function getAccountDetails(username, password, callback) {
             var request = {
                 method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/AccountDetails"
+                url: pathATM + username + "/" + password + "/AccountDetails"
 
             };
 
@@ -73,7 +77,7 @@ app.service('ATMService',
         function getTransactionHistory(username, password, id_account, starDate, endDate, callback) {
             var request = {
                 method: "get",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/Accounts/TransactionHistory/" + id_account + "/" + starDate + "/" + endDate
+                url: pathATM + username + "/" + password + "/Accounts/TransactionHistory/" + id_account + "/" + starDate + "/" + endDate
 
             };
 
@@ -89,7 +93,7 @@ app.service('ATMService',
         function postDispenseMoney(username, password, Id_Account, Amount, Description, callback) {
             var request = {
                 method: "post",
-                url: "http://localhost:5000/api/Users/" + username + "/" + password + "/Accounts/TransactionHistory/Dispense/" + Id_Account + "/" + Amount + "/" + Description
+                url: pathATM + username + "/" + password + "/Accounts/TransactionHistory/Dispense/" + Id_Account + "/" + Amount + "/" + Description
 
             };
 
@@ -102,6 +106,38 @@ app.service('ATMService',
                 });
         }
 
+        function getAuditLogs(callback) {
+            var request = {
+                method: "get",
+                url: pathMongoLog
+
+            };
+
+            $http(request)
+                .success(function (data) {
+                    callback(null, data);
+                })
+                .error(function (data,  status) {
+                    callback(status, data);
+                });
+        }
+
+        function postAuditLog(Description, Impact, callback) {
+            var request = {
+                method: "post",
+                url: pathMongoLog,
+                params: { Description: Description, Type: Impact }
+
+            };
+
+            $http(request)
+                .success(function (data) {
+                    callback(null, data);
+                })
+                .error(function (data,  status) {
+                    callback(status, data);
+                });
+        }
 
     }
 );

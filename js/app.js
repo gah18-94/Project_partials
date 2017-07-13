@@ -46,6 +46,14 @@ app.config(function($stateProvider, $urlRouterProvider, $routeProvider) {
                 "HomeView": { templateUrl: "../partials/TransactionHistory/History.html" },
 
             }
+        })
+        .state('AuditLog', {
+            url: "/AuditLog/",
+            views: {
+                "root": { templateUrl: "../partials/Home/Home.html" },
+                "HomeView": { templateUrl: "../partials/AuditLog/AuditLog.html" },
+
+            }
         });
 
 
