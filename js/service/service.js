@@ -1,7 +1,7 @@
 app.service('ATMService',
     function($http) { // Return public API.
         var pathATM = "http://localhost:5000/api/Users/";
-        var pathMongoLog = "http://localhost:3000/api/Log";
+        var pathMongoLog = "http://10.96.69.229:3000/api/Log";
         return ({
             UserLogin: UserLogin,
             getAccounts: getAccounts,
@@ -122,11 +122,11 @@ app.service('ATMService',
                 });
         }
 
-        function postAuditLog(Description, Impact, callback) {
+        function postAuditLog(description, type, callback) {
             var request = {
                 method: "post",
                 url: pathMongoLog,
-                params: { Description: Description, Type: Impact }
+                params: { Description: description, Type: type }
 
             };
 
